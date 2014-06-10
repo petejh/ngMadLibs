@@ -1,0 +1,46 @@
+body {
+  background-color: #293f50;
+  font-family: "Lucida Sans", sans;
+  font-size: 16px;
+  line-height: 1.5em;
+}
+
+.container {
+  margin: 5em auto;
+  padding: 3em 0;
+  width: 80%;
+  background-color: #cbe2c1;
+  color: #42444e;
+}
+
+section {
+  padding: 0 1em;
+}
+
+h1 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 200%;
+  padding-bottom: 1.5em;
+}
+
+input {
+  margin-bottom: 1em;
+}
+
+p {
+  padding-top: 1.5em;
+}
+
+.fillin {
+  font-weight: bold;
+  display: inline-block;
+  min-width: 10em;
+  border-bottom: 1px solid #42444e;
+  text-align: center;
+}
+
+.filled {
+  color: orange;
+}
+
