@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -8,36 +8,41 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js"></script>
+  <script src="js/ngMadLibs.js"></script>
 </head>
 
-<body ng-app="">
-  <div class="container">
+<body ng-app="ngMadLibs">
+  <div class="container" ng-controller="ngMadLibsCtrl">
     <div>
       <img src="img/mad-lib-happy-face.png">
       <img src="img/ng-mad-libs-logo.png">
       <h1>Automate This!</h1>
     </div>
     <section>
+      <div>
+        <input type="radio" name="gender" value="female" ng-model="gender" ng-change="setPronouns()">Her story
+        <input type="radio" name="gender" value="male" ng-model="gender" ng-change="setPronouns()">History
+      </div>
       <h2>Provide the following words:</h2>
       <div>
-        <input type="text" placeholder="female name" ng-model="female_name"/>
-        <input type="text" placeholder="job title" ng-model="job_title"/>
-        <input type="text" placeholder="tedious task" ng-model="tedious_task"/>
+        <input type="text" placeholder="{{gender}} name" ng-model="wordlist.name"/>
+        <input type="text" placeholder="job title" ng-model="wordlist.job_title"/>
+        <input type="text" placeholder="tedious task" ng-model="wordlist.tedious_task"/>
       </div>
       <div>
       <div>
-        <input type="text" placeholder="dirty task" ng-model="dirty_task"/>
-        <input type="text" placeholder="celebrity" ng-model="celebrity"/>
-        <input type="text" placeholder="useless skill" ng-model="useless_skill"/>
+        <input type="text" placeholder="dirty task" ng-model="wordlist.dirty_task"/>
+        <input type="text" placeholder="celebrity" ng-model="wordlist.celebrity"/>
+        <input type="text" placeholder="useless skill" ng-model="wordlist.useless_skill"/>
       </div>
-        <input type="text" placeholder="obnoxious celebrity" ng-model="obnoxious_celebrity"/>
-        <input type="text" placeholder="huge number" ng-model="huge_number"/>
-        <input type="text" placeholder="adjective" ng-model="adjective"/>
+        <input type="text" placeholder="obnoxious celebrity" ng-model="wordlist.obnoxious_celebrity"/>
+        <input type="text" placeholder="huge number" ng-model="wordlist.huge_number"/>
+        <input type="text" placeholder="adjective" ng-model="wordlist.adjective"/>
       </div>
     </section>
     <section>
-	    <p><span class="fillin" ng-class="{filled:female_name}">{{female_name || 'female name'}}</span> was a <span class="fillin" ng-class="{filled:job_title}">{{job_title || 'job title'}}</span> who loved technology. Although she loved parts of her job, she absolutely hated <span class="fillin" ng-class="{filled:tedious_task}">{{tedious_task || 'tedious task'}}</span> and <span class="fillin" ng-class="{filled:dirty_task}">{{dirty_task || 'dirty task'}}</span>. So, <span class="fillin" ng-class="{filled:female_name}">{{female_name || 'female name'}}</span> met with her life mentor, <span class="fillin" ng-class="{filled:celebrity}">{{celebrity || 'celebrity'}}</span>, who told her to learn how to <span class="fillin" ng-class="{filled:useless_skill}">{{useless_skill || 'useless skill'}}</span> with Thinkful. Thinkful didn't offer a course on <span class="fillin" ng-class="{filled:useless_skill}">{{useless_skill || 'useless skill'}}</span> so she studied programming instead.</p>
-	    <p>What a great decision! With her new skills, <span class="fillin" ng-class="{filled:female_name}">{{female_name || 'female name'}}</span> built a(n) <span class="fillin" ng-class="{filled:adjective}">{{adjective || 'adjective'}}</span> robot named <span class="fillin" ng-class="{filled:obnoxious_celebrity}">{{obnoxious_celebrity || 'obnoxious celebrity'}}</span> that not only loved <span class="fillin" ng-class="{filled:dirty_task}">{{dirty_task || 'dirty task'}}</span>, but did it <span class="fillin" ng-class="{filled:huge_number}">{{huge_number || 'huge number'}}</span> times faster!</p>
+      <p><span class="fillin" ng-class="{filled:wordlist.name}">{{wordlist.name || 'name'}}</span> was a <span class="fillin" ng-class="{filled:wordlist.job_title}">{{wordlist.job_title || 'job title'}}</span> who loved technology. Although {{ pronouns.subject }} loved parts of {{ pronouns.possessive_adjective }} job, {{ pronouns.subject }} absolutely hated <span class="fillin" ng-class="{filled:wordlist.tedious_task}">{{wordlist.tedious_task || 'tedious task'}}</span> and <span class="fillin" ng-class="{filled:wordlist.dirty_task}">{{wordlist.dirty_task || 'dirty task'}}</span>. So, <span class="fillin" ng-class="{filled:wordlist.name}">{{wordlist.name || 'name'}}</span> met with {{ pronouns.possessive_adjective }} life mentor, <span class="fillin" ng-class="{filled:wordlist.celebrity}">{{wordlist.celebrity || 'celebrity'}}</span>, who told {{ pronouns.object }} to learn how to <span class="fillin" ng-class="{filled:wordlist.useless_skill}">{{wordlist.useless_skill || 'useless skill'}}</span> with Thinkful. Thinkful didn't offer a course on <span class="fillin" ng-class="{filled:wordlist.useless_skill}">{{wordlist.useless_skill || 'useless skill'}}</span> so {{ pronouns.subject }} studied programming instead.</p>
+      <p>What a great decision! With {{ pronouns.possessive_adjective }} new skills, <span class="fillin" ng-class="{filled:wordlist.name}">{{wordlist.name || 'name'}}</span> built a(n) <span class="fillin" ng-class="{filled:wordlist.adjective}">{{wordlist.adjective || 'adjective'}}</span> robot named <span class="fillin" ng-class="{filled:wordlist.obnoxious_celebrity}">{{wordlist.obnoxious_celebrity || 'obnoxious celebrity'}}</span> that not only loved <span class="fillin" ng-class="{filled:wordlist.dirty_task}">{{wordlist.dirty_task || 'dirty task'}}</span>, but did it <span class="fillin" ng-class="{filled:wordlist.huge_number}">{{wordlist.huge_number || 'huge number'}}</span> times faster!</p>
     </section>
   </div>
 </body>
