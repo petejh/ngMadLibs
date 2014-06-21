@@ -62,15 +62,21 @@ section {
   border-top: 0.2em solid #293f50;
 }
 
-h1, h2 {
-}
-
 h1 {
   font-family: "PT Sans Narrow", sans-serif;
   text-align: center;
   font-weight: bold;
   font-size: 400%;
   padding: 1rem;
+}
+
+.ui-radio {
+  margin: 0 1.5%;
+  padding-bottom: 1rem;
+}
+
+.ui-radio label {
+  margin-right: 2rem;
 }
 
 h2 {
@@ -84,7 +90,7 @@ h2 {
   width: 30%;
 }
 
-input {
+.ui-text input {
   width: 100%;
   margin-bottom: 1rem;
   text-align: center;
