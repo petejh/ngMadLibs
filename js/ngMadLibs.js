@@ -47,6 +47,12 @@ angular.module("ngMadLibs", [])
       }
     };
 
+    function clearWords() {
+      for (word in $scope.wordlist) {
+        $scope.wordlist[word].value = "";
+      }
+    }
+
     $scope.setPronouns = function() {
       $scope.pronouns = pronouns[$scope.gender];
     };
@@ -55,10 +61,18 @@ angular.module("ngMadLibs", [])
       return( field.value && (field.value != field.placeholder));
     };
 
+    $scope.submit = function() {
+    };
+
+    $scope.reset = function() {
+      clearWords();
+      $scope.gender = "female";
+      $scope.setPronouns();
+      $scope.submitted = false;
+    };
+
     // Initializations
     $scope.wordlist = wordlist;
-
-    $scope.gender = "female";
-    $scope.setPronouns();
+    $scope.reset();
   });
 

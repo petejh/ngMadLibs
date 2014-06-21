@@ -62,6 +62,10 @@ section {
   border-top: 0.2em solid #293f50;
 }
 
+hr {
+  width: 70%;
+}
+
 h1 {
   font-family: "PT Sans Narrow", sans-serif;
   text-align: center;
