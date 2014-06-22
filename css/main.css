@@ -94,11 +94,21 @@ h2 {
   width: 30%;
 }
 
+.span-2 {
+  width: 63%;
+}
+
 .ui-text input {
   width: 100%;
   margin-bottom: 1rem;
   text-align: center;
   height: 1.2rem;
+}
+
+.btn {
+  margin-top: 1rem;
+  float: right;
+  height: 2rem;
 }
 
 p {
@@ -128,5 +138,18 @@ p {
   border-top: none;
   padding-bottom: 0.1rem;
   border-bottom: 0.1rem solid #000000;
+}
+
+.error-msg {
+  color: #ff0000;
+}
+
+.error-msg p {
+  margin: 0;
+  text-align: left;
+}
+
+.pull-right {
+  float: right;
 }
 

@@ -30,6 +30,11 @@ angular.module("ngMadLibs", [])
         placeholder: "adjective" }
     };
 
+    var flags = {
+      revealStory: false,
+      showErrors: false
+    };
+
     var pronouns = {
       female: {
         subject: "she",
@@ -48,9 +53,17 @@ angular.module("ngMadLibs", [])
     };
 
     function clearWords() {
-      for (word in $scope.wordlist) {
-        $scope.wordlist[word].value = "";
+      for (word in wordlist) {
+        wordlist[word].value = "";
       }
+      $scope.wordlist = wordlist;
+    }
+
+    function clearFlags() {
+      flags.revealStory = false;
+      flags.showErrors = false;
+
+      $scope.flags = flags;
     }
 
     $scope.setPronouns = function() {
@@ -62,17 +75,22 @@ angular.module("ngMadLibs", [])
     };
 
     $scope.submit = function() {
+      if ($scope.inputForm.$invalid) {
+        $scope.flags.showErrors = true;
+      } else {
+        $scope.flags.revealStory = true;
+        $scope.flags.showErrors = false;
+      }
     };
 
     $scope.reset = function() {
       clearWords();
+      clearFlags();
       $scope.gender = "female";
       $scope.setPronouns();
-      $scope.submitted = false;
     };
 
     // Initializations
-    $scope.wordlist = wordlist;
     $scope.reset();
   });
 
