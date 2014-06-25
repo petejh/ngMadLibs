@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:700|Shadows+Into+Light+Two" type="text/css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.js"></script>
   <script src="js/ngMadLibs.js"></script>
 </head>
 
@@ -34,19 +34,19 @@
         <h2>Provide the following words:</h2>
         <div class="ui-text clearfix">
           <div class="column-3">
-            <input type="text" name="field1" placeholder="{{ gender }} {{ wordlist.name.placeholder }}" ng-model="wordlist.name.value" required>
-            <input type="text" placeholder="{{ wordlist.job_title.placeholder }}" ng-model="wordlist.job_title.value" required>
-            <input type="text" placeholder="{{ wordlist.tedious_task.placeholder }}" ng-model="wordlist.tedious_task.value" required>
+            <input type="text" name="name" placeholder="{{ gender }} {{ wordlist.name.placeholder }}" ng-model="wordlist.name.value" required>
+            <input type="text" name="job_title" placeholder="{{ wordlist.job_title.placeholder }}" ng-model="wordlist.job_title.value" required>
+            <input type="text" name="tedious_task" placeholder="{{ wordlist.tedious_task.placeholder }}" ng-model="wordlist.tedious_task.value" required>
           </div>
           <div class="column-3">
-            <input type="text" placeholder="{{ wordlist.dirty_task.placeholder }}" ng-model="wordlist.dirty_task.value" required>
-            <input type="text" placeholder="{{ wordlist.celebrity.placeholder }}" ng-model="wordlist.celebrity.value" required>
-            <input type="text" placeholder="{{ wordlist.useless_skill.placeholder }}" ng-model="wordlist.useless_skill.value" required>
+            <input type="text" name="dirty_task" placeholder="{{ wordlist.dirty_task.placeholder }}" ng-model="wordlist.dirty_task.value" required>
+            <input type="text" name="celebrity" placeholder="{{ wordlist.celebrity.placeholder }}" ng-model="wordlist.celebrity.value" required>
+            <input type="text" name="useless_skill" placeholder="{{ wordlist.useless_skill.placeholder }}" ng-model="wordlist.useless_skill.value" required>
           </div>
           <div class="column-3">
-            <input type="text" placeholder="{{ wordlist.obnoxious_celebrity.placeholder }}" ng-model="wordlist.obnoxious_celebrity.value" required>
-            <input type="number" placeholder="{{ wordlist.huge_number.placeholder }}" ng-model="wordlist.huge_number.value" required>
-            <input type="text" placeholder="{{ wordlist.adjective.placeholder }}" ng-model="wordlist.adjective.value" required>
+            <input type="text" name="obnoxious_celebrity" placeholder="{{ wordlist.obnoxious_celebrity.placeholder }}" ng-model="wordlist.obnoxious_celebrity.value" required>
+            <input type="text" name="huge_number" placeholder="{{ wordlist.huge_number.placeholder }}" ng-model="wordlist.huge_number.value" required>
+            <input type="text" name="adjective" placeholder="{{ wordlist.adjective.placeholder }}" ng-model="wordlist.adjective.value" required>
           </div>
         </div>
         <hr>
