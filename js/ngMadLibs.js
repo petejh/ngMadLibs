@@ -71,7 +71,11 @@ angular.module("ngMadLibs", [])
     };
 
     $scope.isFilled = function(field) {
-      return( field.value && (field.value != field.placeholder));
+      return (field.value && (field.value != field.placeholder));
+    };
+
+    $scope.hasErrors = function(field) {
+      return ($scope.inputForm[field].$invalid);
     };
 
     $scope.submit = function() {
