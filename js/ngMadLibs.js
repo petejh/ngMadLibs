@@ -30,6 +30,11 @@ angular.module("ngMadLibs", [])
         placeholder: "adjective" }
     };
 
+    var flags = {
+      revealStory: false,
+      showErrors: false
+    };
+
     var pronouns = {
       female: {
         subject: "she",
@@ -47,18 +52,49 @@ angular.module("ngMadLibs", [])
       }
     };
 
+    function clearWords() {
+      for (word in wordlist) {
+        wordlist[word].value = "";
+      }
+      $scope.wordlist = wordlist;
+    }
+
+    function clearFlags() {
+      flags.revealStory = false;
+      flags.showErrors = false;
+
+      $scope.flags = flags;
+    }
+
     $scope.setPronouns = function() {
       $scope.pronouns = pronouns[$scope.gender];
     };
 
     $scope.isFilled = function(field) {
-      return( field.value && (field.value != field.placeholder));
+      return (field.value && (field.value != field.placeholder));
+    };
+
+    $scope.hasErrors = function(field) {
+      return ($scope.inputForm[field].$invalid);
+    };
+
+    $scope.submit = function() {
+      if ($scope.inputForm.$invalid) {
+        $scope.flags.showErrors = true;
+      } else {
+        $scope.flags.revealStory = true;
+        $scope.flags.showErrors = false;
+      }
+    };
+
+    $scope.reset = function() {
+      clearWords();
+      clearFlags();
+      $scope.gender = "female";
+      $scope.setPronouns();
     };
 
     // Initializations
-    $scope.wordlist = wordlist;
-
-    $scope.gender = "female";
-    $scope.setPronouns();
+    $scope.reset();
   });
 
