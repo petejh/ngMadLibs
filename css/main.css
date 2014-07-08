@@ -57,6 +57,60 @@ body {
   height: 3em;;
 }
 
+.spin-animation {
+}
+
+.spin-animation.spin-add {
+  -webkit-animation: spin-clockwise 2s;
+  animation: spin-clockwise 2s;
+}
+
+@keyframes spin-clockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+@-webkit-keyframes spin-clockwise {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(180deg);
+  }
+}
+
+.spin-animation.spin {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.spin-animation.spin-remove {
+  -webkit-animation: spin-counterclockwise 2s;
+  animation: spin-counterclockwise 2s;
+}
+
+@keyframes spin-counterclockwise {
+  from {
+    transform: rotate(180deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@-webkit-keyframes spin-counterclockwise {
+  from {
+    -webkit-transform: rotate(180deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+  }
+}
+
 section {
   padding: 2rem 1rem;
   border-top: 0.2em solid #293f50;
@@ -144,6 +198,68 @@ p {
   border-top: none;
   padding-bottom: 0.1rem;
   border-bottom: 0.1rem solid #000000;
+}
+
+.submit-animation {
+}
+
+.submit-animation.ng-hide-remove,
+.submit-animation.ng-hide-add {
+  display: block !important;
+}
+
+.submit-animation.ng-hide-remove {
+  -webkit-animation: fade-in 2s;
+  animation: fade-in 2s;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.reveal-animation {
+}
+
+.reveal-animation.ng-hide-remove,
+.reveal-animation.ng-hide-add {
+  display: block !important;
+}
+
+.reveal-animation.ng-hide-remove {
+  -webkit-animation: fade-in 2s;
+  animation: fade-in 2s;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1
+  }
+}
+
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1
+  }
 }
 
 .error-msg {

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular-animate.js"></script>
   <script src="js/ngMadLibs.js"></script>
 </head>
 
@@ -16,85 +17,89 @@
   <div class="container" ng-controller="ngMadLibsCtrl">
     <div class="banner clearfix">
       <div class="icon">
-        <img src="img/mad-lib-happy-face.png">
+        <img src="img/mad-lib-happy-face.png" class="spin-animation" ng-class="{ 'spin': flags.revealStory }">
       </div>
       <div>
         <img src="img/ng-mad-libs-logo-alpha.png" class="logo">
         <h1>Automate This!</h1>
       </div>
     </div>
-    <section ng-hide="flags.revealStory">
-      <form name="inputForm" ng-submit="submit()" novalidate>
-        <div class="ui-radio">
-          <input type="radio" name="gender" id="gender-female" value="female" ng-model="gender" ng-change="setPronouns()">
-          <label for="gender-female">Her story</label>
-          <input type="radio" name="gender" id="gender-male" value="male" ng-model="gender" ng-change="setPronouns()">
-          <label for="gender-male">His-story</label>
-        </div>
-        <h2>Provide the following words:</h2>
-        <div class="ui-text clearfix">
-          <div class="column-3">
-            <input type="text" name="name" placeholder="{{ gender }} {{ wordlist.name.placeholder }}" ng-model="wordlist.name.value" required ng-class="{ 'has-error': flags.showErrors && hasErrors('name') }">
-            <input type="text" name="job_title" placeholder="{{ wordlist.job_title.placeholder }}" ng-model="wordlist.job_title.value" required ng-class="{ 'has-error': flags.showErrors && hasErrors('job_title') }">
-            <input type="text" name="tedious_task" placeholder="{{ wordlist.tedious_task.placeholder }}" ng-model="wordlist.tedious_task.value" required ng-class="{ 'has-error': flags.showErrors && hasErrors('tedious_task') }">
+    <div class="submit-animation" ng-hide="flags.revealStory">
+      <section>
+        <form name="inputForm" ng-submit="submit()" novalidate>
+          <div class="ui-radio">
+            <input type="radio" name="gender" id="gender-female" value="female" ng-model="gender" ng-change="setPronouns()">
+            <label for="gender-female">Her story</label>
+            <input type="radio" name="gender" id="gender-male" value="male" ng-model="gender" ng-change="setPronouns()">
+            <label for="gender-male">His-story</label>
           </div>
-          <div class="column-3">
-            <input type="text" name="dirty_task" placeholder="{{ wordlist.dirty_task.placeholder }}" ng-model="wordlist.dirty_task.value" required ng-class="{ 'has-error': flags.showErrors && hasErrors('dirty_task') }">
-            <input type="text" name="celebrity" placeholder="{{ wordlist.celebrity.placeholder }}" ng-model="wordlist.celebrity.value" required ng-class="{ 'has-error': flags.showErrors && hasErrors('celebrity') }">
-            <input type="text" name="useless_skill" placeholder="{{ wordlist.useless_skill.placeholder }}" ng-model="wordlist.useless_skill.value" required ng-class="{ 'has-error': flags.showErrors && hasErrors('useless_skill') }">
+          <h2>Provide the following words:</h2>
+          <div class="ui-text clearfix">
+            <div class="column-3">
+              <input type="text" name="name" placeholder="{{ gender }} {{ wordlist.name.placeholder }}" ng-model="wordlist.name.value" required ng-class="{ 'has-error': flags.showErrors && hasErrors('name') }">
+              <input type="text" name="job_title" placeholder="{{ wordlist.job_title.placeholder }}" ng-model="wordlist.job_title.value" required ng-class="{ 'has-error': flags.showErrors && hasErrors('job_title') }">
+              <input type="text" name="tedious_task" placeholder="{{ wordlist.tedious_task.placeholder }}" ng-model="wordlist.tedious_task.value" required ng-class="{ 'has-error': flags.showErrors && hasErrors('tedious_task') }">
+            </div>
+            <div class="column-3">
+              <input type="text" name="dirty_task" placeholder="{{ wordlist.dirty_task.placeholder }}" ng-model="wordlist.dirty_task.value" required ng-class="{ 'has-error': flags.showErrors && hasErrors('dirty_task') }">
+              <input type="text" name="celebrity" placeholder="{{ wordlist.celebrity.placeholder }}" ng-model="wordlist.celebrity.value" required ng-class="{ 'has-error': flags.showErrors && hasErrors('celebrity') }">
+              <input type="text" name="useless_skill" placeholder="{{ wordlist.useless_skill.placeholder }}" ng-model="wordlist.useless_skill.value" required ng-class="{ 'has-error': flags.showErrors && hasErrors('useless_skill') }">
+            </div>
+            <div class="column-3">
+              <input type="text" name="obnoxious_celebrity" placeholder="{{ wordlist.obnoxious_celebrity.placeholder }}" ng-model="wordlist.obnoxious_celebrity.value" required ng-class="{ 'has-error': flags.showErrors && hasErrors('obnoxious_celebrity') }">
+              <input type="text" name="huge_number" placeholder="{{ wordlist.huge_number.placeholder }}" ng-model="wordlist.huge_number.value" required ng-class="{ 'has-error': flags.showErrors && hasErrors('huge_number') }">
+              <input type="text" name="adjective" placeholder="{{ wordlist.adjective.placeholder }}" ng-model="wordlist.adjective.value" required ng-class="{ 'has-error': flags.showErrors && hasErrors('adjective') }">
+            </div>
           </div>
-          <div class="column-3">
-            <input type="text" name="obnoxious_celebrity" placeholder="{{ wordlist.obnoxious_celebrity.placeholder }}" ng-model="wordlist.obnoxious_celebrity.value" required ng-class="{ 'has-error': flags.showErrors && hasErrors('obnoxious_celebrity') }">
-            <input type="text" name="huge_number" placeholder="{{ wordlist.huge_number.placeholder }}" ng-model="wordlist.huge_number.value" required ng-class="{ 'has-error': flags.showErrors && hasErrors('huge_number') }">
-            <input type="text" name="adjective" placeholder="{{ wordlist.adjective.placeholder }}" ng-model="wordlist.adjective.value" required ng-class="{ 'has-error': flags.showErrors && hasErrors('adjective') }">
+          <hr>
+          <div class="clearfix">
+            <div class="column-3 pull-right">
+              <input type="submit" value="Generate My Mad Lib" class="btn">
+            </div>
           </div>
-        </div>
-        <hr>
+        </form>
+      </section>
+    </div>
+    <div class="reveal-animation" ng-show="flags.revealStory">
+      <section>
+        <p>
+          <span class="fillin" ng-class="{ filled: isFilled(wordlist.name) }">{{ wordlist.name.value || wordlist.name.placeholder }}</span>
+          was a
+          <span class="fillin" ng-class="{ filled: isFilled(wordlist.job_title) }">{{ wordlist.job_title.value || wordlist.job_title.placeholder }}</span>
+          who loved technology. Although {{ pronouns.subject }} loved parts of {{ pronouns.possessive_adjective }} job, {{ pronouns.subject }} absolutely hated
+          <span class="fillin" ng-class="{ filled: isFilled(wordlist.tedious_task) }">{{ wordlist.tedious_task.value || wordlist.tedious_task.placeholder }}</span>
+          and
+          <span class="fillin" ng-class="{ filled: isFilled(wordlist.dirty_task) }">{{ wordlist.dirty_task.value || wordlist.dirty_task.placeholder }}</span>
+          . So,
+          <span class="fillin" ng-class="{ filled: isFilled(wordlist.name) }">{{ wordlist.name.value || wordlist.name.placeholder }}</span>
+          met with {{ pronouns.possessive_adjective }} life mentor,
+          <span class="fillin" ng-class="{ filled: isFilled(wordlist.celebrity) }">{{ wordlist.celebrity.value || wordlist.celebrity.placeholder }}</span>
+          , who told {{ pronouns.object }} to learn how to
+          <span class="fillin" ng-class="{ filled: isFilled(wordlist.useless_skill) }">{{ wordlist.useless_skill.value || wordlist.useless_skill.placeholder }}</span>
+          with Thinkful. Thinkful didn't offer a course on how to
+          <span class="fillin" ng-class="{ filled: isFilled(wordlist.useless_skill) }">{{ wordlist.useless_skill.value || wordlist.useless_skill.placeholder }}</span>
+          , so {{ pronouns.subject }} studied programming instead.
+        </p>
+        <p>
+          What a great decision! With {{ pronouns.possessive_adjective }} new skills,
+          <span class="fillin" ng-class="{ filled: isFilled(wordlist.name) }">{{ wordlist.name.value || wordlist.name.placeholder }}</span>
+          built a(n)
+          <span class="fillin" ng-class="{ filled: isFilled(wordlist.adjective) }">{{ wordlist.adjective.value || wordlist.adjective.placeholder }}</span>
+          robot named
+          <span class="fillin" ng-class="{ filled: isFilled(wordlist.obnoxious_celebrity) }">{{ wordlist.obnoxious_celebrity.value || wordlist.obnoxious_celebrity.placeholder }}</span>
+          that not only loved
+          <span class="fillin" ng-class="{ filled: isFilled(wordlist.dirty_task) }">{{ wordlist.dirty_task.value || wordlist.dirty_task.placeholder }}</span>
+          , but did it
+          <span class="fillin" ng-class="{ filled: isFilled(wordlist.huge_number) }">{{ wordlist.huge_number.value || wordlist.huge_number.placeholder }}</span>
+          times faster!
+        </p>
         <div class="clearfix">
-          <div class="column-3 pull-right">
-            <input type="submit" value="Generate My Mad Lib" class="btn">
+          <div class="pull-right">
+            <input type="reset" value="Start over" ng-click="reset()" class="btn">
           </div>
         </div>
-      </form>
-    </section>
-    <section ng-show="flags.revealStory">
-      <p>
-        <span class="fillin" ng-class="{ filled: isFilled(wordlist.name) }">{{ wordlist.name.value || wordlist.name.placeholder }}</span>
-        was a
-        <span class="fillin" ng-class="{ filled: isFilled(wordlist.job_title) }">{{ wordlist.job_title.value || wordlist.job_title.placeholder }}</span>
-        who loved technology. Although {{ pronouns.subject }} loved parts of {{ pronouns.possessive_adjective }} job, {{ pronouns.subject }} absolutely hated
-        <span class="fillin" ng-class="{ filled: isFilled(wordlist.tedious_task) }">{{ wordlist.tedious_task.value || wordlist.tedious_task.placeholder }}</span>
-        and
-        <span class="fillin" ng-class="{ filled: isFilled(wordlist.dirty_task) }">{{ wordlist.dirty_task.value || wordlist.dirty_task.placeholder }}</span>
-        . So,
-        <span class="fillin" ng-class="{ filled: isFilled(wordlist.name) }">{{ wordlist.name.value || wordlist.name.placeholder }}</span>
-        met with {{ pronouns.possessive_adjective }} life mentor,
-        <span class="fillin" ng-class="{ filled: isFilled(wordlist.celebrity) }">{{ wordlist.celebrity.value || wordlist.celebrity.placeholder }}</span>
-        , who told {{ pronouns.object }} to learn how to
-        <span class="fillin" ng-class="{ filled: isFilled(wordlist.useless_skill) }">{{ wordlist.useless_skill.value || wordlist.useless_skill.placeholder }}</span>
-        with Thinkful. Thinkful didn't offer a course on how to
-        <span class="fillin" ng-class="{ filled: isFilled(wordlist.useless_skill) }">{{ wordlist.useless_skill.value || wordlist.useless_skill.placeholder }}</span>
-        , so {{ pronouns.subject }} studied programming instead.
-      </p>
-      <p>
-        What a great decision! With {{ pronouns.possessive_adjective }} new skills,
-        <span class="fillin" ng-class="{ filled: isFilled(wordlist.name) }">{{ wordlist.name.value || wordlist.name.placeholder }}</span>
-        built a(n)
-        <span class="fillin" ng-class="{ filled: isFilled(wordlist.adjective) }">{{ wordlist.adjective.value || wordlist.adjective.placeholder }}</span>
-        robot named
-        <span class="fillin" ng-class="{ filled: isFilled(wordlist.obnoxious_celebrity) }">{{ wordlist.obnoxious_celebrity.value || wordlist.obnoxious_celebrity.placeholder }}</span>
-        that not only loved
-        <span class="fillin" ng-class="{ filled: isFilled(wordlist.dirty_task) }">{{ wordlist.dirty_task.value || wordlist.dirty_task.placeholder }}</span>
-        , but did it
-        <span class="fillin" ng-class="{ filled: isFilled(wordlist.huge_number) }">{{ wordlist.huge_number.value || wordlist.huge_number.placeholder }}</span>
-        times faster!
-      </p>
-      <div class="clearfix">
-        <div class="column-3 pull-right">
-          <input type="reset" value="Start over" ng-click="reset()" class="btn">
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </div>
 </body>
 </html>

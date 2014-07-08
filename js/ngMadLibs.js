@@ -1,6 +1,6 @@
-angular.module("ngMadLibs", [])
+angular.module("ngMadLibs", ['ngAnimate'])
   .controller("ngMadLibsCtrl", function($scope) {
-    var wordlist = {
+    var wordlist = $scope.wordlist = {
       name: {
         value: "",
         placeholder: "name" },
@@ -30,7 +30,7 @@ angular.module("ngMadLibs", [])
         placeholder: "adjective" }
     };
 
-    var flags = {
+    var flags = $scope.flags = {
       revealStory: false,
       showErrors: false
     };
@@ -56,14 +56,11 @@ angular.module("ngMadLibs", [])
       for (word in wordlist) {
         wordlist[word].value = "";
       }
-      $scope.wordlist = wordlist;
     }
 
     function clearFlags() {
       flags.revealStory = false;
       flags.showErrors = false;
-
-      $scope.flags = flags;
     }
 
     $scope.setPronouns = function() {
@@ -80,10 +77,10 @@ angular.module("ngMadLibs", [])
 
     $scope.submit = function() {
       if ($scope.inputForm.$invalid) {
-        $scope.flags.showErrors = true;
+        flags.showErrors = true;
       } else {
-        $scope.flags.revealStory = true;
-        $scope.flags.showErrors = false;
+        flags.revealStory = true;
+        flags.showErrors = false;
       }
     };
 
